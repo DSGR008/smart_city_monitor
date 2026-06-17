@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import psycopg2
-import streamlit_autorefresh as st_autorefresh
+from streamlit_autorefresh import st_autorefresh
 
-st_autorefresh.autorefresh(interval=5000)
+st_autorefresh(interval=5000)
 
 st.title("Smart City Traffic Dashboard")
 
@@ -37,8 +37,8 @@ with c3:
     st.metric("latest traffic" ,latest_traffic)
 
 chart_data = df[['timstamp', 'vehicle_count']].set_index('timstamp')
-chart_data = chart_data.sort_values("timstamp")
+chart_data = chart_data.sort_index()
 
-st.line_chart(chart_data.set_index('timstamp'))
+st.line_chart(chart_data)
 
 st.dataframe(df)
