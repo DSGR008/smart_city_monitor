@@ -16,4 +16,4 @@ while True:
     producer.send('traffic-data', value=json.dumps(traffic).encode('utf-8'))
     print(traffic)
     id+=1
-    time.sleep(2)
+    time.sleep(5)
